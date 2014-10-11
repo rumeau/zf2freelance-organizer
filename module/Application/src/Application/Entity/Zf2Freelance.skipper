@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<skipper version="3.0.1.1129" name="Zf2Freelance" mvc="Zend Framework" orm="Doctrine2" uuid="e7f236b1-8339-4e30-9570-42dc5c96a8e8">
+  <module name="Application\Entity" import-format="Doctrine2Php" import-path="." uuid="f562fbf7-a3cb-429f-a034-12566a74e7b5">
+    <entity name="Role" uuid="37b8d770-b8be-4c07-bdf6-cbd8f0a30dd7">
+      <field name="id" type="integer" required="true" primary="true" uuid="bdee4eda-89fb-483c-b5de-7b47f3d1931c">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="roleId" type="string" size="255" unique="true" uuid="346dc0c2-7a82-4f2f-b80d-a9258716162f"/>
+      <field name="parent_id" uuid="776fbe1d-394e-453f-99d2-90c7e83ab4c3"/>
+      <orm-attributes>
+        <attribute name="table">role</attribute>
+        <attribute name="export-file-name">Role.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="Role" to="Role" inverse-alias="parent" uuid="ff56e6d1-2ca7-45f9-8346-2c9aa2df7742">
+      <association-field from="parent_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="User" uuid="59ee87d3-89d5-4062-b6cb-c6b7afeddc52">
+      <field name="id" type="integer" required="true" primary="true" uuid="d6d721d5-97a7-4e5a-ac76-395a6a91b528">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="username" type="string" size="255" unique="true" uuid="3e3a05cc-466e-4459-92e6-54e340df8cf4"/>
+      <field name="email" type="string" size="255" unique="true" uuid="c8ff6f1f-c7aa-4c43-9f74-737744b4b024"/>
+      <field name="displayName" type="string" size="50" uuid="dd278717-dd2d-4cfb-8a1e-5ae03e529ebb"/>
+      <field name="password" type="string" size="128" uuid="a418ee2c-b7a6-4b96-a0ba-3888d86179d1"/>
+      <orm-attributes>
+        <attribute name="table">users</attribute>
+        <attribute name="export-file-name">User.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="user_role_linker" uuid="fa193f65-cbc8-4985-97ca-c911552e4697">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="a59596de-d715-4c2c-816b-2dd3df90ae9a"/>
+      <field name="user_id" uuid="59cdbb3a-489c-41cd-8485-6eaaa866623b"/>
+      <field name="role_id" uuid="5ef6c8a3-045e-4bf6-b56a-bd4a2fc723a4"/>
+    </entity>
+    <many-to-many mn-entity="user_role_linker" uuid="ce544c5d-66aa-4fd0-a11f-2a9dcd139323">
+      <many-to-many-entity name="User" owning-side="true" uuid="05211b0e-49ff-4db9-a651-f605312adc13">
+        <many-to-many-field from="user_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="Role" owning-side="false" alias="roles" uuid="d85a46e1-a17a-4e18-ab71-4d60674851e7">
+        <many-to-many-field from="role_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <orm-attributes>
+      <attribute name="namespace">Application\Entity</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <entity uuid="37b8d770-b8be-4c07-bdf6-cbd8f0a30dd7" bg-color="4294967295" hdr-color="4292006610" position-x="33" position-y="40" size-x="0" size-x2="101" size-y="0" size-y2="59"/>
+    <entity uuid="59ee87d3-89d5-4062-b6cb-c6b7afeddc52" bg-color="4294967295" hdr-color="4292006610" position-x="188" position-y="40" size-x="0" size-x2="128" size-y="0" size-y2="87"/>
+    <many-to-many-association uuid="ce544c5d-66aa-4fd0-a11f-2a9dcd139323" color="4289243304"/>
+    <project uuid="e7f236b1-8339-4e30-9570-42dc5c96a8e8" size-x="0" size-x2="436" size-y="0" size-y2="374"/>
+    <module uuid="f562fbf7-a3cb-429f-a034-12566a74e7b5" bg-color="4293391335" position-x="50" position-y="50" size-x="0" size-x2="336" size-y="0" size-y2="274"/>
+    <entity uuid="fa193f65-cbc8-4985-97ca-c911552e4697" bg-color="4294967295" hdr-color="4292006610" position-x="41" position-y="167" size-x="0" size-x2="86" size-y="0" size-y2="74"/>
+    <association uuid="ff56e6d1-2ca7-45f9-8346-2c9aa2df7742" center-position-x="0" center-position-y="-20" color="4278236368"/>
+  </visual-data>
+</skipper>

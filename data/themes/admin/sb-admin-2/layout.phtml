@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <?= $this->headlink()->appendStylesheet($this->basepath('sb-admin-2/css/bootstrap.min.css'))
+                         ->appendStylesheet($this->basepath('sb-admin-2/css/plugins/metisMenu/metisMenu.min.css'))
+                         ->appendStylesheet($this->basepath('sb-admin-2/css/plugins/timeline.css'))
+                         ->appendStylesheet($this->basepath('sb-admin-2/css/sb-admin-2.css'))
+                         ->appendStylesheet($this->basepath('sb-admin-2/css/plugins/morris.css'))
+                         ->appendStylesheet($this->basepath('sb-admin-2/font-awesome-4.1.0/css/font-awesome.min.css')); ?>
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><?= $this->translate('My Freelance Organizer'); ?></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <?= $this->partial('sb-admin-2/user-toolbar.phtml'); ?>
+
+            <?= $this->partial('sb-admin-2/sidebar-nav.phtml'); ?>
+
+        </nav>
+
+        <div id="page-wrapper">
+            <?= $this->content; ?>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery Version 1.11.0 -->
+    <?= $this->inlinescript()->appendFile($this->basepath('js/app.js'))
+                             ->appendFile($this->basepath('sb-admin-2/js/plugins/metisMenu/metisMenu.min.js'))
+                             //->appendFile($this->basepath('sb-admin-2/js/plugins/morris/raphael.min.js'))
+                             //->appendFile($this->basepath('sb-admin-2/js/plugins/morris/morris.min.js'))
+                             //->appendFile($this->basepath('sb-admin-2/js/plugins/morris/morris-data.js'))
+                             ->appendFile($this->basepath('sb-admin-2/js/sb-admin-2.js')); ?>
+
+</body>
+
+</html>
