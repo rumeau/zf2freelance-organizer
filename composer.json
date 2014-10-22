@@ -20,7 +20,12 @@
         "neilime/zf2-twb-bundle": "2.*@stable",
         "rwoverdijk/assetmanager": "1.*",
         "thadafinser/zfc-datagrid": "dev-master",
-        "rumeau/rumeaulib": "dev-master"
+        "rumeau/rumeaulib": "dev-master",
+        "rumeau/rumeaulib-admin": "dev-master",
+        "rumeau/rumeaulib-appconfig": "dev-master",
+        "rumeau/rumeaulib-thememanager": "dev-master",
+        "rumeau/rumeaulib-dashboard": "dev-master",
+        "rumeau/rumeaulib-aclbackend": "dev-master"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",
