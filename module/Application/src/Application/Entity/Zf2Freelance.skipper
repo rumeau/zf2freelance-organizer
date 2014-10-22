@@ -35,6 +35,7 @@
       <field name="email" type="string" size="255" unique="true" uuid="c8ff6f1f-c7aa-4c43-9f74-737744b4b024"/>
       <field name="displayName" type="string" size="50" uuid="dd278717-dd2d-4cfb-8a1e-5ae03e529ebb"/>
       <field name="password" type="string" size="128" uuid="a418ee2c-b7a6-4b96-a0ba-3888d86179d1"/>
+      <field name="state" type="integer" default="1" required="true" uuid="bf45ffbb-18c6-403d-a673-1cbca33b7a31"/>
       <orm-attributes>
         <attribute name="table">users</attribute>
         <attribute name="export-file-name">User.php</attribute>
@@ -53,16 +54,86 @@
         <many-to-many-field from="role_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>
+    <entity name="Client" uuid="481079da-c5d7-499d-8109-c6d7381c74af">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="41a84cfb-0467-4fcf-8962-ca283248eec8"/>
+      <field name="name" type="string" uuid="82ad8754-f346-4cdb-84fb-e79dd6ebd12f"/>
+      <field name="email" type="string" uuid="e919a67a-d3cd-4c44-bfef-df75c2db938b"/>
+      <field name="address" type="text" uuid="c23851d8-6c95-458c-814e-891df448d068"/>
+      <field name="phone" type="string" uuid="1ccea791-ef27-4f14-a936-afff454e73fc"/>
+      <field name="contactName" type="string" uuid="a13918ba-84d3-42e8-89c3-6e4b9509da40">
+        <orm-attributes>
+          <attribute name="column">contact_name</attribute>
+        </orm-attributes>
+      </field>
+      <field name="contactEmail" uuid="3e5ab05b-3e6a-4364-bf30-cb62b2100ffe">
+        <orm-attributes>
+          <attribute name="column">contact_email</attribute>
+        </orm-attributes>
+      </field>
+      <field name="contactPhone" uuid="3ab7a0c6-122e-429b-ba1f-4474d644ea62">
+        <orm-attributes>
+          <attribute name="column">contact_phone</attribute>
+        </orm-attributes>
+      </field>
+      <field name="city" uuid="535d7bcd-d5b6-4e59-8ffa-b5506a3e9534"/>
+      <field name="country" uuid="8ca96959-f3f8-42f3-983a-7c3dc6ce226a"/>
+      <field name="postalCode" uuid="03a6da66-fbb6-42ad-bc74-a761360457e5">
+        <orm-attributes>
+          <attribute name="column">postal_code</attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">client</attribute>
+        <attribute name="export-file-name">Client.php</attribute>
+      </orm-attributes>
+    </entity>
     <orm-attributes>
       <attribute name="namespace">Application\Entity</attribute>
     </orm-attributes>
   </module>
+  <module name="RumeauLibAppConfig\Entity" import-format="Doctrine2Php" import-path="../../../../RumeauLibAppConfig/src/RumeauLibAppConfig/Entity" uuid="09aaecb9-8288-4a46-95a1-aa7d6664a644">
+    <entity name="AppConfig" uuid="aa273a98-e407-4ca9-970b-7f46970d1c2e">
+      <field name="id" type="integer" required="true" primary="true" uuid="b16d9ec6-5fba-423f-bda1-2139fdde3e82">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="section" uuid="b5709116-0caa-4be3-8742-915aeee240df">
+        <orm-attributes>
+          <attribute name="column">section_name</attribute>
+        </orm-attributes>
+      </field>
+      <field name="option" required="true" uuid="f941bffd-fd83-4f14-a682-335834b02315">
+        <orm-attributes>
+          <attribute name="column">option_name</attribute>
+        </orm-attributes>
+      </field>
+      <field name="value" uuid="5e6f19fd-d749-4cf3-9309-42b1cb1ab69b"/>
+      <field name="isSerialized" type="integer" uuid="da1177bd-050d-4b64-88b0-66cd6d92d999"/>
+      <index name="UniqueConfigKey" unique="true">
+        <index-field name="section"/>
+        <index-field name="option"/>
+      </index>
+      <orm-attributes>
+        <attribute name="table">app_config</attribute>
+        <attribute name="export-file-name">AppConfig.php</attribute>
+      </orm-attributes>
+    </entity>
+    <orm-attributes>
+      <attribute name="namespace">RumeauLibAppConfig\Entity</attribute>
+    </orm-attributes>
+  </module>
   <visual-data>
+    <module uuid="09aaecb9-8288-4a46-95a1-aa7d6664a644" bg-color="4294900968" position-x="486" position-y="50" size-x="0" size-x2="148" size-y="0" size-y2="147"/>
     <entity uuid="37b8d770-b8be-4c07-bdf6-cbd8f0a30dd7" bg-color="4294967295" hdr-color="4292006610" position-x="33" position-y="40" size-x="0" size-x2="101" size-y="0" size-y2="59"/>
-    <entity uuid="59ee87d3-89d5-4062-b6cb-c6b7afeddc52" bg-color="4294967295" hdr-color="4292006610" position-x="188" position-y="40" size-x="0" size-x2="128" size-y="0" size-y2="87"/>
+    <entity uuid="481079da-c5d7-499d-8109-c6d7381c74af" bg-color="4294967295" hdr-color="4292006610" position-x="203" position-y="203" size-x="0" size-x2="83" size-y="0" size-y2="87"/>
+    <entity uuid="59ee87d3-89d5-4062-b6cb-c6b7afeddc52" bg-color="4294967295" hdr-color="4292006610" position-x="189" position-y="40" size-x="0" size-x2="128" size-y="0" size-y2="101"/>
+    <entity uuid="aa273a98-e407-4ca9-970b-7f46970d1c2e" bg-color="4294967295" hdr-color="4292006610" position-x="20" position-y="40" size-x="0" size-x2="108" size-y="0" size-y2="87"/>
     <many-to-many-association uuid="ce544c5d-66aa-4fd0-a11f-2a9dcd139323" color="4289243304"/>
-    <project uuid="e7f236b1-8339-4e30-9570-42dc5c96a8e8" size-x="0" size-x2="436" size-y="0" size-y2="374"/>
-    <module uuid="f562fbf7-a3cb-429f-a034-12566a74e7b5" bg-color="4293391335" position-x="50" position-y="50" size-x="0" size-x2="336" size-y="0" size-y2="274"/>
+    <project uuid="e7f236b1-8339-4e30-9570-42dc5c96a8e8" size-x="0" size-x2="684" size-y="0" size-y2="494"/>
+    <module uuid="f562fbf7-a3cb-429f-a034-12566a74e7b5" bg-color="4293391335" position-x="50" position-y="50" size-x="0" size-x2="339" size-y="0" size-y2="394"/>
     <entity uuid="fa193f65-cbc8-4985-97ca-c911552e4697" bg-color="4294967295" hdr-color="4292006610" position-x="41" position-y="167" size-x="0" size-x2="86" size-y="0" size-y2="74"/>
     <association uuid="ff56e6d1-2ca7-45f9-8346-2c9aa2df7742" center-position-x="0" center-position-y="-20" color="4278236368"/>
   </visual-data>

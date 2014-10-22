@@ -1,0 +1,53 @@
+<?php $this->headtitle('Create Client'); ?>
+<div class="row">
+    <div class="col-lg-12 page-header">
+        <h1><?= $this->translate('Clients'); ?></h1>
+    </div>
+</div>
+
+<?php
+$form   = $this->form;
+$client = $form->get('client');
+?>
+
+<?= $this->form(null, 'horizontal')->openTag($form); ?>
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?= $this->translate('Client Information'); ?></div>
+            <div class="panel-body">
+                <?= $this->formrow($client->get('name')); ?>
+                <?= $this->formrow($client->get('email')); ?>
+                <?= $this->formrow($client->get('phone')); ?>
+                <?= $this->formrow($client->get('address')); ?>
+                <?= $this->formrow($client->get('postalCode')); ?>
+                <?= $this->formrow($client->get('city')); ?>
+                <?= $this->formrow($client->get('country')); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><?= $this->translate('Contact Information'); ?></div>
+            <div class="panel-body">
+                <?= $this->formrow($client->get('contactName')); ?>
+                <?= $this->formrow($client->get('contactEmail')); ?>
+                <?= $this->formrow($client->get('contactPhone')); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <?= $this->formhidden($form->get('formcsrf')); ?>
+            <a class="btn btn-default" href="<?= $this->url(
+                'admin/clients',
+                ['action' => 'index']
+            ); ?>">&larr; <?= $this->translate('Cancel'); ?></a>
+            <button type="submit" class="btn btn-success"><?= $this->translate('Save'); ?></button>
+        </div>
+    </div>
+
+<?= $this->form()->closeTag(); ?>

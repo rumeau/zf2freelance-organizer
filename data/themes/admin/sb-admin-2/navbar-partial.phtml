@@ -1,0 +1,85 @@
+<?php
+/**
+ * @var $container Zend\Navigation\Navigation $container
+ */
+$container = $this->container;
+?>
+<ul class="<?= $this->navigation()->menu()->getUlClass(); ?>" id="side-menu">
+    <?php
+    foreach ($container as $page) {
+        if (!$this->navigation()->accept($page)) {
+            continue;
+        }
+        /* @var Zend\Navigation\Page\Mvc $page */
+        $hasChildren = $page->hasPages();
+        if (!$hasChildren) {
+            ?>
+            <li>
+                <a class="nav-header<?= ($page->isActive()) ? ' active' : ''; ?>"
+                   href="<?= $page->getHref() ?>" <?= ($page->getTarget() != "") ? ' target="' . $page->getTarget() . '"' : ''; ?>>
+                    <?php
+                    $icon = ($page->get("icon") !== "") ? '<span class="' . $page->get("icon") . '"></span>' : '';
+                    echo $icon  . ' ' . $page->getLabel();
+                    ?>
+                </a>
+            </li>
+        <?php
+        } else {
+            //check if access is allowed at least one item
+            $access = false;
+            foreach ($page->getPages() as $child) {
+                if ($this->navigation()->accept($child) && $child->get("separator") !== true) {
+                    $access = true;
+                }
+            }
+            if ($access) {
+                ?>
+                <li>
+                    <a<?= ($child->isActive()) ? ' class="active"' : ''; ?> href="#">
+                        <?php
+                        $icon = ($child->get("icon") !== "") ? '<span class="' . $child->get("icon") . '"></span>' : '';
+                        echo $icon . ' ' . $page->getLabel() . '<span class="fa arrow"></span>';
+                        ?>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <?php
+                        foreach ($page->getPages() as $child) {
+                            if (!$this->navigation()->accept($child)) {
+                                continue;
+                            }
+                            if ($child->get("separator") === true) {
+                                echo '<li class="divider"></li>';
+                                continue;
+                            }
+                            ?>
+                            <li>
+                                <a<?= ($child->isActive()) ? ' class="active"' : ''; ?> href="<?= $child->getHref() ?>" <?= ($child->getTarget() != "") ? ' target="' . $child->getTarget() . '"' : ''; ?>>
+                                    <?php
+                                    $icon = ($child->get("icon") !== "") ? '<span class="' . $child->get("icon") . '"></span>' : '';
+                                    echo $icon . " " . $child->getLabel();
+                                    ?>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
+            <?php
+            } else {
+                ?>
+                <li>
+                    <a class="nav-header<?= ($page->isActive()) ? ' active' : ''; ?>"
+                       href="<?= $page->getHref() ?>" <?= ($page->getTarget() != "") ? ' target="' . $page->getTarget() . '"' : ''; ?>>
+                        <?php
+                        $icon = ($page->get("icon") !== "") ? '<span class="' . $page->get("icon") . '"></span>' : '';
+                        echo $icon . " " . $page->getLabel();
+                        ?>
+                    </a>
+                </li>
+            <?php
+            }
+        }
+    }
+    ?>
+</ul>

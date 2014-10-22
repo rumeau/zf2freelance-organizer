@@ -1,14 +1,16 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
+    "name": "rumeau/zf2-freelance",
+    "description": "Freelance Project Organizer",
+    "license": "MIT License",
     "keywords": [
+        "freelance",
+        "project",
         "framework",
         "zf2"
     ],
-    "homepage": "http://framework.zend.com/",
+    "homepage": "http://www.jprumeau.com/",
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "zendframework/zendframework": "2.3.*",
         "doctrine/doctrine-orm-module": "0.*",
         "zf-commons/zfc-user-doctrine-orm": "1.*",
@@ -16,7 +18,9 @@
         "goalio/goalio-forgotpassword-doctrine-orm": "1.*",
         "zf-commons/zfc-admin": "0.1.*",
         "neilime/zf2-twb-bundle": "2.*@stable",
-        "rwoverdijk/assetmanager": "1.*"
+        "rwoverdijk/assetmanager": "1.*",
+        "thadafinser/zfc-datagrid": "dev-master",
+        "rumeau/rumeaulib": "dev-master"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",

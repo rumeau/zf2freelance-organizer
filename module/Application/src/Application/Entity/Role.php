@@ -10,6 +10,8 @@ namespace Application\Entity;
 
 use BjyAuthorize\Acl\HierarchicalRoleInterface;
 use Doctrine\ORM\Mapping as ORM;
+use RumeauLibAclBackend\Acl\RoleDescriptionInterface;
+use Zend\Permissions\Acl\Role\RoleInterface;
 
 /**
  * An example entity that represents a role.
@@ -19,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Tom Oram <tom@scl.co.uk>
  */
-class Role implements HierarchicalRoleInterface
+class Role implements RoleInterface, HierarchicalRoleInterface, RoleDescriptionInterface
 {
     /**
      * @var int
@@ -27,13 +29,19 @@ class Role implements HierarchicalRoleInterface
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string", unique=true, length=255, nullable=true)
      */
-    protected $roleId;
+    private $roleId;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     /**
      * @var Role
@@ -99,12 +107,28 @@ class Role implements HierarchicalRoleInterface
     /**
      * Set the parent role.
      *
-     * @param Role $role
+     * @param Role $parent
      *
      * @return void
      */
     public function setParent(Role $parent)
     {
         $this->parent = $parent;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 }

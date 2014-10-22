@@ -103,7 +103,11 @@ return array(
                 'js/app.js' => [
                     'js/jquery-1.11.0.js',
                     'js/bootstrap.min.js',
+                    'js/bootstrap-formhelpers.min.js',
                 ],
+                'css/app.css' => [
+                    'bootstrap-formhelpers.min.css',
+                ]
             ],
             'paths' => [
                 __DIR__ . '/../assets',

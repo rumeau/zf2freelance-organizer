@@ -1,5 +1,15 @@
 <?php
 return [
+    'navigation' => [
+        'admin' => [
+            'home' => [
+                'label' => 'Dashboard',
+                'route' => 'home',
+                'icon' => 'fa fa-dashboard fa-fw',
+            ],
+        ],
+    ],
+
     'router' => [
         'routes' => [
             'admin' => [
@@ -18,6 +28,17 @@ return [
                 ]
             ],
         ],
+    ],
+
+    'rumeaulib_appconfig' => [
+        'forms' => [
+            'rumeaulib_admin' => null,
+            'global_settings' => 'Admin\Form\AppConfig\GlobalSettings',
+        ],
+    ],
+
+    'service_manager' => [
+
     ],
 
     'controllers' => [

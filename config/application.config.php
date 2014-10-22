@@ -20,14 +20,18 @@ $modules = [
     'Dashboard',
     'RumeauLibAdmin',
     'Admin',
+    'RumeauLibAclBackend',
+    'User',
+    'Client',
 
     'ZendDeveloperTools',
 
+    'RumeauLib',
     'RumeauLibAppConfig',
     'RumeauLibThemeManager',
 
     'AssetManager',
-
+    'ZfcDatagrid',
     'TwbBundle',
 ];
 
@@ -38,6 +42,7 @@ if ($env == 'dev') {
 if (\Zend\Console\Console::isConsole()) {
     $modules[] = 'ZFTool';
     array_splice($modules, array_search('BjyAuthorize', $modules), 1);
+    array_splice($modules, array_search('ZendDeveloperTools', $modules), 1);
 }
 
 return array(

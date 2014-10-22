@@ -343,3 +343,15 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+#page-wrapper > .alert {
+    margin-top: 10px;
+}
+
+#tabGroup-config .tab-content {
+    overflow: hidden;
+    border: 1px solid #DDD;
+    border-top: 0;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}

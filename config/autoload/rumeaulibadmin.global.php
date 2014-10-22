@@ -17,7 +17,7 @@ return [
      */
     'rumeaulib_appconfig' => [
         'forms' => [
-            'rumeaulib_admin' => 'RumeauLibAdmin\Form\AppConfig\Config',
+            'rumeaulib_admin' => null, //'RumeauLibAdmin\Form\AppConfig\Config',
         ],
     ],
 

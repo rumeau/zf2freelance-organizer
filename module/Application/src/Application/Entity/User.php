@@ -57,8 +57,10 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var int
+     * @ORM\Column(type="integer", nullable=false)
+     * 
      */
-    protected $state;
+    protected $state = 1;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

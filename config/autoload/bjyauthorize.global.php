@@ -47,5 +47,17 @@ return [
         'resource_providers' => [
             'BjyAuthorize\Provider\Resource\Config' => [],
         ],
+
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+                ['controller' => 'RumeauLibAclBackend\Controller\Acl', 'roles' => ['guest', 'user']],
+                ['controller' => 'RumeauLibAclBackend\Controller\Roles', 'roles' => ['guest', 'user']],
+                ['controller' => 'RumeauLibAclBackend\Controller\Resources', 'roles' => ['guest', 'user']],
+                ['controller' => 'RumeauLibAclBackend\Controller\Rules', 'roles' => ['guest', 'user']],
+            ],
+            'BjyAuthorize\Guard\Route' => [
+                ['route' => 'admin/rumeaulibaclbackend-acl', 'roles' => ['guest']],
+            ],
+        ],
     ],
 ];

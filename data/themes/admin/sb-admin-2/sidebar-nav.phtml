@@ -1,6 +1,6 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
-        <ul class="nav" id="side-menu">
+        <ul class="nav" id="side-menu-search">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
@@ -12,8 +12,21 @@
                 </div>
                 <!-- /input-group -->
             </li>
+        </ul>
+
+        <?php
+        echo $this->navigation('nav_admin')->menu()
+            ->setUlClass('nav')
+            ->setPartial('sb-admin-2/navbar-partial.phtml'); ?>
+
+        <br /><br />
+
+        <ul class="nav" id="side-menu">
             <li>
                 <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li>
+                <a class="" href="<?= $this->url('admin/users'); ?>"><i class="fa fa-users"></i> <?= $this->translate('Users'); ?></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
