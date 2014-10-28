@@ -1,3 +1,9 @@
+# Acerca #
+
+Esta aplicación permite la organizacion de clientes a traves de un gestor de contenidos, se encuentra en desarrollo y pretende integrar Presupuestos, Tareas, Informacion de Clientes, Control de Pagos y posiblemente Facturación.
+
+Cualquier aporte es bienvenido.
+
 # Instalacion #
 
 
